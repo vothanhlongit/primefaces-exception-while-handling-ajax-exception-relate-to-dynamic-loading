@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:local="http://xmlns.jcp.org/jsf/composite/components">
+
+<h:panelGroup id="filter-container" layout="block" styleClass="widget-filter-panel">
+  <ui:repeat id="filterable-column" var="field" value="#{widget.filterableColumns}">
+    <div class="ui-g">
+      <h:panelGroup rendered="#{field.field eq 'priority'}">
+          <local:CategoryFilterColumn field="#{field}" categoryTree="#{field.userCategoryTree}" categoryNodeSelection="#{field.userSelectionCategoryNodes}" />
+      </h:panelGroup>
+    </div>
+  </ui:repeat>
+</h:panelGroup>
+</html>

@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui">
+
+<div id="task-panel-group">
+  <div class="widget__header">
+    <div id="widget__header" class="widget__header-title">Your tasks</div>
+    <div id="widget-header-actions" class="widget__header-actions">
+
+      <p:link id="filter-sidebar-link" href="#"><i class="pi pi-filter"/></p:link>
+
+      <p:overlayPanel id="filter-overlay-panel" widgetVar="filter-overlay-panel" for="filter-sidebar-link" appendTo="@(#grid-stack)" dynamic="true">
+        <h:form id="filter-form">
+          <ui:insert name="widgetFilterContent" />
+        </h:form>
+      </p:overlayPanel>
+
+    </div>
+  </div>
+  <div id="widget-content">
+    <ui:insert name="widgetContent" />
+  </div>
+</div>
+</html>

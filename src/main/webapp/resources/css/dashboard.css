@@ -1,0 +1,17 @@
+.widget__header {
+  flex: 0 0 30px;
+  padding: 10px;
+  font-size: 14px;
+  border-bottom: 2px solid gray;
+  font-weight: bold;
+  height: 44px;
+}
+
+.widget__header-actions {
+  float: right;
+}
+
+.widget__header-title {
+  width: calc(100% - 120px);
+  display: inline-block;
+}

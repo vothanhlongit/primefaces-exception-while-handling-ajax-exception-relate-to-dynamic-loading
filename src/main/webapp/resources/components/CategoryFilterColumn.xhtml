@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<cc:interface>
+  <cc:attribute name="field" required="true"/>
+  <cc:attribute name="categoryTree" required="true"/>
+  <cc:attribute name="categoryNodeSelection" required="true"/>
+</cc:interface>
+
+<cc:implementation>
+  <h:panelGroup rendered="#{cc.attrs.field.field eq 'priority'}">
+    <f:event listener="#{cc.attrs.field.loadCategories()}" type="preRenderComponent"/>
+
+    <h:panelGroup id="widget-filter-category-container" layout="block">
+      <div>
+        <p:inputText id="widget-filter-category" readonly="true" value=""/>
+      </div>
+
+      <p:overlayPanel id="widget-filter-category-panel" for="widget-filter-category" appendTo="@(body)" dynamic="true">
+        <p:tree id="priorityy-filter-tree"
+          value="#{cc.attrs.categoryTree}" var="node"
+          selectionMode="checkbox"
+          selection="#{cc.attrs.categoryNodeSelection}">
+          <p:treeNode>
+            <h:outputText value="#{node.value}" />
+          </p:treeNode>
+        </p:tree>
+      </p:overlayPanel>
+    </h:panelGroup>
+  </h:panelGroup>
+</cc:implementation>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+  xmlns:local="http://xmlns.jcp.org/jsf/composite/components">
+
+<h:body>
+  <ui:composition template="/layouts/BasicTemplate.xhtml">
+    <ui:define name="pageContent">
+      <ui:fragment>
+        <h:outputStylesheet library="css" name="dashboard.css" />
+        <div id="grid-stack" class="grid-stack">
+          <c:forEach var="widget" items="#{managedBean.selectedDashboard.widgets}">
+            <div class="grid-stack-item" gs-id="#{widget.id}" gs-x="0" gs-y="0" gs-w="12" gs-h="5">
+              <div class="grid-stack-item-content" style="border: 1px solid gray;">
+                <c:if test="#{widget.type eq 'TASK'}">
+                  <local:TaskDashboardWidget widget="#{widget}" id="task-#{widget.id}" />
+                </c:if>
+              </div>
+            </div>
+          </c:forEach>
+        </div>
+        <h:outputScript library="js" name="dashboard.js" />
+      </ui:fragment>
+    </ui:define>
+  </ui:composition>
+</h:body>
+</html>

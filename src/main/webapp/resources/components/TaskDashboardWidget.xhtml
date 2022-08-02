@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+  xmlns:local="http://xmlns.jcp.org/jsf/composite/components">
+
+<cc:interface>
+  <cc:attribute name="widget" />
+</cc:interface>
+
+<cc:implementation>
+  <c:set var="widget" value="#{cc.attrs.widget}" />
+
+  <ui:decorate template="/layouts/TableWidget.xhtml">
+    <ui:param name="widget" value="#{widget}" />
+
+    <ui:define name="widgetFilterContent">
+      <ui:include src="/layouts/TaskFilter.xhtml">
+        <ui:param name="widget" value="#{widget}" />
+      </ui:include>
+    </ui:define>
+
+    <ui:define name="widgetContent">
+      <local:TaskWidget taskWidget="#{widget}" />
+    </ui:define>
+  </ui:decorate>
+</cc:implementation>
+</html>
