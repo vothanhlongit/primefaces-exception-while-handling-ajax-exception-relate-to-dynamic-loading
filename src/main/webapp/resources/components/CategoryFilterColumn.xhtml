@@ -7,8 +7,6 @@
 
 <cc:interface>
   <cc:attribute name="field" required="true"/>
-  <cc:attribute name="categoryTree" required="true"/>
-  <cc:attribute name="categoryNodeSelection" required="true"/>
 </cc:interface>
 
 <cc:implementation>
@@ -22,9 +20,9 @@
 
       <p:overlayPanel id="widget-filter-category-panel" for="widget-filter-category" appendTo="@(body)" dynamic="true">
         <p:tree id="priorityy-filter-tree"
-          value="#{cc.attrs.categoryTree}" var="node"
+          value="#{cc.attrs.field.userCategoryTree}" var="node"
           selectionMode="checkbox"
-          selection="#{cc.attrs.categoryNodeSelection}">
+          selection="#{cc.attrs.field.userSelectionCategoryNodes}">
           <p:treeNode>
             <h:outputText value="#{node.value}" />
           </p:treeNode>

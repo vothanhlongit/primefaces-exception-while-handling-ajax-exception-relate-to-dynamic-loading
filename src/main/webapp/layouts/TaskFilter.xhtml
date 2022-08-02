@@ -9,7 +9,7 @@
   <ui:repeat id="filterable-column" var="field" value="#{widget.filterableColumns}">
     <div class="ui-g">
       <h:panelGroup rendered="#{field.field eq 'priority'}">
-          <local:CategoryFilterColumn field="#{field}" categoryTree="#{field.userCategoryTree}" categoryNodeSelection="#{field.userSelectionCategoryNodes}" />
+          <local:CategoryFilterColumn field="#{field}" />
       </h:panelGroup>
     </div>
   </ui:repeat>
